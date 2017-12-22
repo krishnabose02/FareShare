@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:id="@+id/taskroot"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kgecdevs.onlinemarket.fareshare.NewTaskGenerateActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <android.support.v7.widget.CardView
+                android:layout_width="80dp"
+                app:cardCornerRadius="40dp"
+                android:layout_margin="10dp"
+                app:cardBackgroundColor="@color/dimGreen"
+                android:layout_height="80dp">
+                <TextView
+                    android:text="KB"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:text="\u20B9"
+                android:textSize="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <EditText
+                android:text="0"
+                android:id="@+id/amount"
+                android:layout_gravity="center_vertical"
+                android:minEms="5"
+                android:inputType="number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="Uneven split?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <Switch
+                    android:textOff="Pay for all"
+                    android:textOn="Pay for some"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginStart="10dp"
+                    android:id="@+id/payforall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/description"
+            android:hint="description"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:layout_margin="10dp"
+        android:visibility="gone"
+        android:id="@+id/memberselector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:text="Krishna"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:text="Mayukh"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+
+                <TextView
+                    android:layout_margin="5dp"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:text="Rupak"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <CheckBox
+                    android:checked="true"
+                    android:id="@+id/kcheck"
+                    android:onClick="onCheckedBoxClicked"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:checked="true"
+                    android:onClick="onCheckedBoxClicked"
+                    android:id="@+id/mcheck"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+                <CheckBox
+                    android:checked="true"
+                    android:id="@+id/rcheck"
+                    android:onClick="onCheckedBoxClicked"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.CardView
+                        app:cardCornerRadius="30dp"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/dimGreen"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="KB"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:text="owes \u20B9"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/p1summary"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.CardView
+                        app:cardCornerRadius="30dp"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/red"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="MS"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:text="owes \u20B9"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/p2summary"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                app:cardCornerRadius="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                    <android.support.v7.widget.CardView
+                        app:cardCornerRadius="30dp"
+                        android:layout_margin="5dp"
+                        app:cardBackgroundColor="@color/blue"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp">
+                        <TextView
+                            android:layout_gravity="center"
+                            android:text="RS"
+                            android:textColor="@color/white"
+                            android:textSize="30sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </android.support.v7.widget.CardView>
+
+                    <TextView
+                        android:text="owes \u20B9"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/p3summary"
+                        android:textSize="25sp"
+                        android:layout_margin="10dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <TextView
+                android:layout_gravity="bottom"
+                android:onClick="createDialog"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:background="@color/dimGreen"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:text="Add Expense"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                tools:ignore="OnClick" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

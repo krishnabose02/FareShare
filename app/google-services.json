@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "79872599154",
+    "firebase_url": "https://fareshare2018.firebaseio.com",
+    "project_id": "fareshare2018",
+    "storage_bucket": "fareshare2018.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:79872599154:android:52028ec2aa542c8f",
+        "android_client_info": {
+          "package_name": "com.kgecdevs.onlinemarket.fareshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "79872599154-51to8p50qbqgaqbdk3fl1medh4htuc24.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kgecdevs.onlinemarket.fareshare",
+            "certificate_hash": "5ed13ff69302cd0f557972055769cee55d5c5df2"
+          }
+        },
+        {
+          "client_id": "79872599154-vpfp3f001fvp9nhv44s2giscq6buehnc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFMQOgIanI-k0qhKmfLV2Vlu42j_GCEWw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "79872599154-vpfp3f001fvp9nhv44s2giscq6buehnc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
