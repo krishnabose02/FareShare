@@ -24,12 +24,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class NewTaskGenerateActivity extends AppCompatActivity {
-    private TextView rupaksummary, mayukhsummary, krishnasummary;
-    private boolean rchecked, mchecked, kchecked;
+    private TextView ajsummary, kbsummary, pgsummary,sjsummary,snsummary,srsummary;
+    private boolean ajchecked, kbchecked, pgchecked,sjchecked,snchecked,srchecked;
     private LinearLayout rootLayout;
     private EditText am;
-    private int count=3;
+    private int count=6;
     private EditText desc;
+
+    private int sumid[] = new int[]{R.id.ajsummary, R.id.kbsummary, R.id.pgsummary, R.id.sjsummary, R.id.snsummary, R.id.srsummary};
+    private TextView sumtext[] = new TextView[6];
+    private boolean checked[] = new boolean[6];
 
     protected void onDestroy()
     {
@@ -42,15 +46,12 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task_generate);
-        krishnasummary = findViewById(R.id.p1summary);
-        rupaksummary = findViewById(R.id.p3summary);
-        mayukhsummary = findViewById(R.id.p2summary);
-        krishnasummary.setText("0");
-        mayukhsummary.setText("0");
-        rupaksummary.setText("0");
-
-
-        rchecked=kchecked=mchecked=true;
+        for(int i=0; i<6;i++)
+        {
+            sumtext[i] = findViewById(sumid[i]);
+            sumtext[i].setText("0");
+            checked[i] = true;
+        }
 
         Switch pfs = findViewById(R.id.payforall);
         pfs.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -60,7 +61,7 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
             }
         });
 
-        am = (EditText)findViewById(R.id.amount);
+        am = findViewById(R.id.amount);
         am.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -89,7 +90,10 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         else
             mem.setVisibility(View.GONE);
 
-        rchecked=kchecked=mchecked=true;
+        for(int i=0;i<6;i++)
+        {
+            checked[i] = true;
+        }
         splitBill();
     }
 
@@ -107,14 +111,17 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         int fare = Integer.parseInt(ams);
         int part = fare/count;
 
-        if(rchecked) rupaksummary.setText(""+part);
-        else rupaksummary.setText("0");
-
-        if(mchecked) mayukhsummary.setText(""+part);
-        else mayukhsummary.setText("0");
-
-        if(kchecked) krishnasummary.setText(""+part);
-        else krishnasummary.setText("0");
+        for(int i=0;i<6;i++)
+        {
+            if(checked[i])
+            {
+                sumtext[i].setText(""+part);
+            }
+            else
+            {
+                sumtext[i].setText("0");
+            }
+        }
     }
 
     public void onCheckedBoxClicked(View v)
@@ -122,18 +129,30 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         int id = v.getId();
         switch (id)
         {
-            case R.id.rcheck:   rchecked=((CheckBox)v).isChecked();
-                                if(rchecked)count++;
+            case R.id.ajcheck:   checked[0]=((CheckBox)v).isChecked();
+                                if(checked[0])count++;
                                 else count--;
                 break;
-            case R.id.kcheck:   kchecked=((CheckBox)v).isChecked();
-                                if(kchecked)count++;
+            case R.id.kbcheck:   checked[1]=((CheckBox)v).isChecked();
+                                if(checked[1])count++;
                                 else count--;
-                break;
-            case R.id.mcheck:   mchecked=((CheckBox)v).isChecked();
-                                if(mchecked)count++;
+                                break;
+            case R.id.pgcheck:  checked[2]=((CheckBox)v).isChecked();
+                                if(checked[2])count++;
                                 else count--;
-                break;
+                                break;
+            case R.id.sjcheck:   checked[3]=((CheckBox)v).isChecked();
+                                if(checked[3])count++;
+                                else count--;
+                                break;
+            case R.id.sncheck:   checked[4]=((CheckBox)v).isChecked();
+                                if(checked[4])count++;
+                                else count--;
+                                break;
+            case R.id.srcheck:  checked[5]=((CheckBox)v).isChecked();
+                                if(checked[5])count++;
+                                else count--;
+                                break;
         }
         splitBill();
     }
@@ -169,6 +188,10 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         ab.show();
     }
 
+
+    private int checkIDs[] = new int[]{R.id.ajcheck,R.id.kbcheck,R.id.pgcheck,R.id.sjcheck,R.id.sncheck,R.id.srcheck};
+    private String names[] = new String[]{"Abhishek","Krishna","Pallab","Sourab","Souradip","Sumit"};
+
     public String generateText()
     {
         Switch pfa;
@@ -196,11 +219,10 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         else
         {
             String paidfor = "";
-            if(rchecked) paidfor+="Rupak ";
-
-            if(mchecked) paidfor+="Mayukh ";
-
-            if(kchecked) paidfor+="Krishna";
+            for(int i = 0; i<6;i++)
+            {
+                if(checked[i]) paidfor+=names[i]+" ";
+            }
 
             return (firstname+" paid \u20B9"+amount+" for "+paidfor+description);
         }
@@ -215,11 +237,14 @@ public class NewTaskGenerateActivity extends AppCompatActivity {
         int amount = Integer.parseInt(((EditText)findViewById(R.id.amount)).getText().toString());
         int kri, ma, ru, part;
         kri = ma = ru = 0;
+        int divs[] = new int[6];
         part = amount/count;
-        if(kchecked) kri = part;
-        if(rchecked) ru = part;
-        if(mchecked) ma = part;
-        FirebaseHandler.updateMatrix(kri, ma, ru);
+        for(int i=0;i<6;i++)
+        {
+            if(checked[i])
+                divs[i] = part;
+        }
+        FirebaseHandler.updateMatrix(kri, ma, ru);//TODO rewrite for 6 people
         if(!status)
         {
             Snackbar bar = Snackbar.make(rootLayout, "Upload failed", Snackbar.LENGTH_SHORT);

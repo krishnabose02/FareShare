@@ -26,11 +26,12 @@ import java.util.ArrayList;
 
 public class FirebaseHandler {
 static ArrayList<String> recentUpdates;
-static ArrayList<String> money0, money1,money2;
+static ArrayList<String> money0, money1,money2,m1,m2,m3,m4,m5,m6;
 static int rupak, krishna, mayukh;
 static int[] num;
 static int[][] mm;
 private static Context context;
+static private String teamname = "lazarus90";
 
 
 
@@ -40,7 +41,7 @@ private static Context context;
         recentUpdates = new ArrayList<>();
         //to do real coding here
 
-        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child("joblesscoders");
+        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child(teamname);
 
         dref.addChildEventListener(new ChildEventListener() {
             @Override
@@ -79,11 +80,31 @@ private static Context context;
     public static boolean uploadExpense(Context con, String s)
     {
         FirebaseDatabase fbase = FirebaseDatabase.getInstance();
-        DatabaseReference dref = fbase.getReference().child("joblesscoders");
+        DatabaseReference dref = fbase.getReference().child(teamname);
         dref.push().setValue(s);
         return true;
     }
 
+
+    public static void updateMatrix(int divs[])
+    {
+        ArrayList<ArrayList<String>> moneymat = new ArrayList<>();
+        m1 = new ArrayList<>();
+        m2 = new ArrayList<>();
+        m3 = new ArrayList<>();
+        m4 = new ArrayList<>();
+        m5 = new ArrayList<>();
+        m6 = new ArrayList<>();
+        moneymat.add(m1);
+        moneymat.add(m2);
+        moneymat.add(m3);
+        moneymat.add(m4);
+        moneymat.add(m5);
+        moneymat.add(m6);
+
+        DatabaseReference dref = FirebaseDatabase.getInstance().getReference().child("matrix");
+
+    }
     public static void updateMatrix(int kri, int ma, int ru) {
         krishna = kri;
         mayukh = ma;
